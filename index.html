@@ -1,25 +1,628 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DigiAssist — Weiterleitung / Redirect</title>
-  <link rel="canonical" href="https://digiassist.kestura.io/">
-  <meta name="robots" content="noindex, follow">
-  <meta http-equiv="refresh" content="0; url=https://digiassist.kestura.io/">
-  <script>window.location.replace("https://digiassist.kestura.io/" + window.location.search + window.location.hash);</script>
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0e1424;color:#e8edf6;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;text-align:center}
-    a{color:#6ea8ff}
-    .box{max-width:520px;padding:2rem}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+  Security headers.
+  Only Content-Security-Policy is valid as an HTML <meta http-equiv> per
+  the HTML5 spec; X-Content-Type-Options, X-Frame-Options, Referrer-Policy
+  and Permissions-Policy are HTTP-only and must be set at the host edge
+  (Cloudflare, Hetzner Apache .htaccess, etc.). See docs/Security.md.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<title>DigiAssist — IT-Sicherheitsberatung und KI-Governance | Elias Lenz</title>
+<meta name="description" content="Freiberufliche IT-Sicherheitsberatung und KI-Governance für den Mittelstand. NIS2, DORA, EU AI Act Compliance. Cybersecurity Consulting aus Filderstadt.">
+<meta property="og:title" content="DigiAssist — IT-Sicherheitsberatung und KI-Governance">
+<meta property="og:description" content="Freiberufliche IT-Sicherheitsberatung und KI-Governance für den Mittelstand. NIS2, DORA, EU AI Act Compliance.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eliaslenz-mbaberatung.de">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<link rel="canonical" href="https://eliaslenz-mbaberatung.de">
+<link rel="alternate" hreflang="de" href="https://eliaslenz-mbaberatung.de/">
+<link rel="alternate" hreflang="en-GB" href="https://eliaslenz-mbaberatung.de/">
+<link rel="alternate" hreflang="x-default" href="https://eliaslenz-mbaberatung.de/">
+<link rel="stylesheet" href="./styles.css">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "DigiAssist — Elias Lenz, IT-Sicherheitsberatung und KI-Governance",
+  "url": "https://eliaslenz-mbaberatung.de",
+  "description": "Freiberufliche IT-Sicherheitsberatung und KI-Governance für den Mittelstand. NIS2, DORA, EU AI Act, Cyber Resilience Act Compliance.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Filderstadt",
+    "addressRegion": "Baden-Württemberg",
+    "addressCountry": "DE"
+  },
+  "areaServed": ["EU", "EEA", "DACH"],
+  "founder": {
+    "@type": "Person",
+    "name": "Elias Lenz",
+    "jobTitle": "IT-Sicherheitsberater und KI-Governance Consultant"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Kestura",
+    "url": "https://kestura.com"
+  }
+}
+</script>
 </head>
 <body>
-  <div class="box">
-    <h1>DigiAssist ist umgezogen</h1>
-    <p>Diese Seite finden Sie jetzt unter
-       <a href="https://digiassist.kestura.io/">digiassist.kestura.io</a>.</p>
-    <p>Sie werden automatisch weitergeleitet. / You are being redirected.</p>
+
+<!-- Skip Link -->
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<!-- ====== HEADER ====== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#" class="logo" aria-label="DigiAssist — Startseite">
+      <!-- SVG Logo: Shield with circuit/lock motif -->
+      <svg class="logo__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18 2L4 8v10c0 9.33 5.97 17.06 14 20 8.03-2.94 14-10.67 14-20V8L18 2z" stroke="#0d9488" stroke-width="2" fill="none"/>
+        <path d="M18 2L4 8v10c0 9.33 5.97 17.06 14 20 8.03-2.94 14-10.67 14-20V8L18 2z" fill="#0d9488" opacity="0.08"/>
+        <circle cx="18" cy="16" r="4" stroke="#0d9488" stroke-width="1.5" fill="none"/>
+        <line x1="18" y1="20" x2="18" y2="26" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="14" y1="16" x2="8" y2="16" stroke="#0d9488" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <line x1="22" y1="16" x2="28" y2="16" stroke="#0d9488" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <line x1="18" y1="12" x2="18" y2="7" stroke="#0d9488" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <span class="logo__text">
+        DigiAssist
+        <span class="logo__sub" data-i18n="hero.badge">IT-Sicherheitsberatung</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul class="nav__links" role="list">
+        <li><a href="#about" data-i18n="nav.about">Über uns</a></li>
+        <li><a href="#services" data-i18n="nav.services">Leistungen</a></li>
+        <li><a href="#references" data-i18n="nav.references">Referenzen</a></li>
+        <li><a href="#qualifications" data-i18n="nav.qualifications">Qualifikationen</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+      </ul>
+
+      <div class="lang-toggle" role="group" aria-label="Sprache wählen">
+        <button class="lang-toggle__btn active" data-lang="de" onclick="setLanguage('de')" aria-label="Deutsch">DE</button>
+        <button class="lang-toggle__btn" data-lang="en" onclick="setLanguage('en')" aria-label="English">EN</button>
+      </div>
+
+      <button class="nav-toggle" aria-label="Navigation öffnen" onclick="toggleMobileNav()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </nav>
   </div>
+</header>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation">
+  <button class="mobile-nav__close" aria-label="Navigation schließen" onclick="toggleMobileNav()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="24" height="24">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <a href="#about" onclick="toggleMobileNav()" data-i18n="nav.about">Über uns</a>
+  <a href="#services" onclick="toggleMobileNav()" data-i18n="nav.services">Leistungen</a>
+  <a href="#references" onclick="toggleMobileNav()" data-i18n="nav.references">Referenzen</a>
+  <a href="#qualifications" onclick="toggleMobileNav()" data-i18n="nav.qualifications">Qualifikationen</a>
+  <a href="#contact" onclick="toggleMobileNav()" data-i18n="nav.contact">Kontakt</a>
+  <div class="lang-toggle" style="margin-top: 1rem;">
+    <button class="lang-toggle__btn active" data-lang="de" onclick="setLanguage('de')" aria-label="Deutsch">DE</button>
+    <button class="lang-toggle__btn" data-lang="en" onclick="setLanguage('en')" aria-label="English">EN</button>
+  </div>
+</div>
+
+<!-- ====== MAIN ====== -->
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__badge" data-i18n="hero.badge">IT-Sicherheitsberatung</span>
+        <h1 class="hero__title">
+          <span data-i18n="hero.title.line1">IT-Sicherheitsberatung</span><br>
+          <span class="accent" data-i18n="hero.title.line2">und KI-Governance</span><br>
+          <span data-i18n="hero.title.line3">für den Mittelstand</span>
+        </h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">Compliance mit NIS2, DORA, EU AI Act und Cyber Resilience Act — pragmatisch umgesetzt. Von der Risikoanalyse bis zur Implementierung.</p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary" data-i18n="hero.cta">Jetzt Beratungsgespräch anfragen</a>
+          <a href="#services" class="btn btn--outline" data-i18n="hero.cta2">Leistungen entdecken</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section section--alt" id="about">
+    <div class="container container--narrow">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="about.label">Über DigiAssist</span>
+        <h2 class="section__title" data-i18n="about.title">Ihr Partner für IT-Sicherheit</h2>
+      </div>
+      <div class="about-content reveal">
+        <div class="about__text">
+          <p data-i18n="about.p1">DigiAssist — Elias Lenz bietet freiberufliche IT-Sicherheitsberatung und KI-Governance für Unternehmen im deutschsprachigen Raum und der EU. Als Nebenerwerb gestartet, verbinde ich akademische Tiefe mit praktischer Erfahrung aus Projekten bei Energieversorgern und Netzbetreibern.</p>
+          <p data-i18n="about.p2">Mein Fokus liegt auf pragmatischen Lösungen: Compliance-Anforderungen wie NIS2, DORA und den EU AI Act in umsetzbare Maßnahmen übersetzen — ohne Overhead, ohne Buzzwords.</p>
+          <p data-i18n="about.p3">Erneute Existenzgründung 2026 — mit frischem Fokus auf KI-Governance und die neuen europäischen Regulierungsrahmen.</p>
+          <div class="about__note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span data-i18n="about.note">DigiAssist ist ein Nebenerwerb. Verpflichtungen gegenüber dem Arbeitgeber haben stets Vorrang.</span>
+          </div>
+        </div>
+        <div class="about__highlight">
+          <div class="about__stat">
+            <div class="about__stat-value" data-i18n="about.stat1.value">10+</div>
+            <div class="about__stat-label" data-i18n="about.stat1.label">Jahre IT-Erfahrung</div>
+          </div>
+          <hr class="divider">
+          <div class="about__stat">
+            <div class="about__stat-value" data-i18n="about.stat2.value">MSc + MBA</div>
+            <div class="about__stat-label" data-i18n="about.stat2.label">Doppelqualifikation</div>
+          </div>
+          <hr class="divider">
+          <div class="about__stat">
+            <div class="about__stat-value" data-i18n="about.stat3.value">PhD</div>
+            <div class="about__stat-label" data-i18n="about.stat3.label">Cybersecurity (laufend)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="services.label">Leistungen</span>
+        <h2 class="section__title" data-i18n="services.title">Sechs Säulen der IT-Sicherheit</h2>
+        <p class="section__desc" data-i18n="services.desc">Umfassende Beratung — von der Risikoanalyse über Compliance bis zur technischen Implementierung.</p>
+      </div>
+      <div class="services-grid">
+
+        <!-- Service 1: Cybersecurity Consulting -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title" data-i18n="service1.title">Cybersecurity Consulting</h3>
+          <p class="service-card__desc" data-i18n="service1.desc">Ganzheitliche Sicherheitsanalysen, Penetrationstests und Risikobewertungen. Identifikation von Schwachstellen und Entwicklung maßgeschneiderter Schutzstrategien.</p>
+          <div class="service-card__tags" data-i18n-tags="service1.tags">
+            <span class="service-card__tag">Audits</span>
+            <span class="service-card__tag">Pentests</span>
+            <span class="service-card__tag">Risikoanalyse</span>
+          </div>
+        </div>
+
+        <!-- Service 2: AI Governance & Compliance -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title" data-i18n="service2.title">AI Governance & Compliance</h3>
+          <p class="service-card__desc" data-i18n="service2.desc">Umsetzung regulatorischer Anforderungen: NIS2-Richtlinie, DORA, EU AI Act und Cyber Resilience Act. Von der Gap-Analyse bis zur vollständigen Compliance.</p>
+          <div class="service-card__tags" data-i18n-tags="service2.tags">
+            <span class="service-card__tag">NIS2</span>
+            <span class="service-card__tag">DORA</span>
+            <span class="service-card__tag">EU AI Act</span>
+            <span class="service-card__tag">CRA</span>
+          </div>
+        </div>
+
+        <!-- Service 3: DevSecOps Advisory -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title" data-i18n="service3.title">DevSecOps Advisory</h3>
+          <p class="service-card__desc" data-i18n="service3.desc">Integration von Sicherheit in CI/CD-Pipelines und Infrastructure-as-Code. Security Shift-Left für schnellere und sicherere Deployments.</p>
+          <div class="service-card__tags" data-i18n-tags="service3.tags">
+            <span class="service-card__tag">CI/CD</span>
+            <span class="service-card__tag">IaC</span>
+            <span class="service-card__tag">Shift-Left</span>
+          </div>
+        </div>
+
+        <!-- Service 4: Policy as Code -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title" data-i18n="service4.title">Policy as Code</h3>
+          <p class="service-card__desc" data-i18n="service4.desc">Automatisierung von Compliance-Richtlinien mit OPA, Conftest und weiteren Tools. Audit-fähige Policies, die in Code überprüfbar sind.</p>
+          <div class="service-card__tags" data-i18n-tags="service4.tags">
+            <span class="service-card__tag">OPA</span>
+            <span class="service-card__tag">Conftest</span>
+            <span class="service-card__tag">Automation</span>
+          </div>
+        </div>
+
+        <!-- Service 5: Digital Transformation -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title" data-i18n="service5.title">Digitale Transformation</h3>
+          <p class="service-card__desc" data-i18n="service5.desc">Sichere Cloud-Migration und IT-Modernisierung. Begleitung von Legacy-Systemen in moderne, sichere Architekturen.</p>
+          <div class="service-card__tags" data-i18n-tags="service5.tags">
+            <span class="service-card__tag">Cloud</span>
+            <span class="service-card__tag">Migration</span>
+            <span class="service-card__tag">Modernisierung</span>
+          </div>
+        </div>
+
+        <!-- Service 6: vCISO -->
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title" data-i18n="service6.title">vCISO</h3>
+          <p class="service-card__desc" data-i18n="service6.desc">Virtual Chief Information Security Officer als Dienstleistung. Strategische Sicherheitsberatung und Führung — ohne die Kosten einer Vollzeitstelle.</p>
+          <div class="service-card__tags" data-i18n-tags="service6.tags">
+            <span class="service-card__tag">Strategie</span>
+            <span class="service-card__tag">Führung</span>
+            <span class="service-card__tag">Flexibel</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENZEN -->
+  <section class="section section--alt" id="references">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="refs.label">Referenzen</span>
+        <h2 class="section__title" data-i18n="refs.title">Ausgewählte Projekte</h2>
+        <p class="section__desc" data-i18n="refs.desc">Erfahrung aus Projekten in der Energiewirtschaft und kritischen Infrastruktur, mit Schwerpunkt auf EHS und Gefahrstoffmanagement.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-card reveal">
+          <div class="client-card__logo">
+            <svg viewBox="0 0 48 48" fill="none" width="32" height="32">
+              <rect x="8" y="12" width="32" height="24" rx="3" stroke="#0d9488" stroke-width="2" fill="none"/>
+              <path d="M14 24h6m4 0h6" stroke="#0d9488" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="2" fill="#0d9488"/>
+            </svg>
+          </div>
+          <div class="client-card__info">
+            <h3 data-i18n="ref1.name">Gefahrstoffmanagement (Energiesektor)</h3>
+            <p data-i18n="ref1.desc">Anwendungsbetreuung und kontinuierliche Weiterentwicklung einer Gefahrstoffmanagement-Software (EcoWebDesk) bei einem großen regionalen Energieversorger und Netzbetreiber. Verantwortlich für Stammdatenqualität, Anwenderbetreuung und Abstimmung mit EHS-Fachstellen zur Sicherstellung der regelkonformen Handhabung an mehreren Standorten.</p>
+          </div>
+        </div>
+
+        <div class="client-card reveal">
+          <div class="client-card__logo">
+            <svg viewBox="0 0 48 48" fill="none" width="32" height="32">
+              <circle cx="24" cy="24" r="14" stroke="#0d9488" stroke-width="2" fill="none"/>
+              <path d="M14 24h20M24 14v20" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+              <circle cx="24" cy="24" r="6" stroke="#0d9488" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="client-card__info">
+            <h3 data-i18n="ref2.name">EHS-Softwarebetrieb (Kritische Infrastruktur)</h3>
+            <p data-i18n="ref2.desc">Operativer Betrieb und Konfiguration von EHS- und Gefahrstoffmanagement-Software (Quentic / EcoWebDesk) bei einem Betreiber kritischer Infrastruktur. Pflege von Sicherheitsdaten, Onboarding interner Anwender, Koordination von Vendor-Updates sowie Dokumentation der Prozesse für Audit- und Compliance-Zwecke.</p>
+          </div>
+        </div>
+
+        <div class="client-card reveal">
+          <div class="client-card__logo">
+            <svg viewBox="0 0 48 48" fill="none" width="32" height="32">
+              <rect x="10" y="8" width="28" height="28" rx="4" stroke="#0d9488" stroke-width="2" fill="none"/>
+              <path d="M18 20l4 4 8-8" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="client-card__info">
+            <h3 data-i18n="ref3.name">Webprojekt KMU</h3>
+            <p data-i18n="ref3.desc">Kompletter Webauftritt für ein kleines Unternehmen — Beispiel eines abgeschlossenen DigiAssist-Projekts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIFIKATIONEN -->
+  <section class="section" id="qualifications">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="quals.label">Qualifikationen</span>
+        <h2 class="section__title" data-i18n="quals.title">Akademische & berufliche Qualifikationen</h2>
+      </div>
+      <div class="quals-grid">
+        <div class="qual-group reveal">
+          <div class="qual-group__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span data-i18n="quals.academic">Akademisch</span>
+          </div>
+          <ul class="qual-list" role="list">
+            <li data-i18n="qual.msc">MSc Information Security</li>
+            <li data-i18n="qual.mba">MBA International Management</li>
+            <li data-i18n="qual.phd">PhD Candidate, Cybersecurity — University of Plymouth</li>
+          </ul>
+        </div>
+        <div class="qual-group reveal">
+          <div class="qual-group__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>
+            <span data-i18n="quals.certs">Zertifizierungen</span>
+          </div>
+          <ul class="qual-list" role="list">
+            <li data-i18n="qual.cc">ISC² Certified in Cybersecurity (CC)</li>
+            <li data-i18n="qual.sscp">ISC² Systems Security Certified Practitioner (SSCP)</li>
+          </ul>
+        </div>
+        <div class="qual-group reveal">
+          <div class="qual-group__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+            <span data-i18n="quals.recognition">Anerkennung</span>
+          </div>
+          <ul class="qual-list" role="list">
+            <li data-i18n="qual.ihk">IHK Gleichwertigkeitsbescheid</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section section--alt" id="contact">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__label" data-i18n="contact.label">Kontakt</span>
+        <h2 class="section__title" data-i18n="contact.title">Beratungsgespräch vereinbaren</h2>
+        <p class="section__desc" data-i18n="contact.desc">Beschreiben Sie Ihr Anliegen und ich melde mich zeitnah bei Ihnen.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact__info">
+          <div class="contact__info-item">
+            <div class="contact__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact__info-text">
+              <h3 data-i18n="contact.info.location.title">Standort</h3>
+              <p data-i18n="contact.info.location.text">Filderstadt, Baden-Württemberg</p>
+            </div>
+          </div>
+          <div class="contact__info-item">
+            <div class="contact__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="contact__info-text">
+              <h3 data-i18n="contact.info.scope.title">Einzugsgebiet</h3>
+              <p data-i18n="contact.info.scope.text">EU / EWR / DACH — Remote & vor Ort</p>
+            </div>
+          </div>
+          <div class="contact__info-item">
+            <div class="contact__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="contact__info-text">
+              <h3 data-i18n="contact.info.response.title">Antwortzeit</h3>
+              <p data-i18n="contact.info.response.text">In der Regel innerhalb von 48 Stunden</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="form" id="contactForm" onsubmit="return handleSubmit(event)">
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="name" data-i18n="contact.form.name">Name</label>
+              <input class="form__input" type="text" id="name" name="name" required
+                data-i18n-placeholder="contact.form.placeholder.name" placeholder="Ihr Name">
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email" data-i18n="contact.form.email">E-Mail</label>
+              <input class="form__input" type="email" id="email" name="email" required
+                data-i18n-placeholder="contact.form.placeholder.email" placeholder="ihre@email.de">
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="company" data-i18n="contact.form.company">Unternehmen (optional)</label>
+              <input class="form__input" type="text" id="company" name="company"
+                data-i18n-placeholder="contact.form.placeholder.company" placeholder="Ihr Unternehmen">
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="subject" data-i18n="contact.form.subject">Betreff</label>
+              <input class="form__input" type="text" id="subject" name="subject" required
+                data-i18n-placeholder="contact.form.placeholder.subject" placeholder="Worum geht es?">
+            </div>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="message" data-i18n="contact.form.message">Nachricht</label>
+            <textarea class="form__textarea" id="message" name="message" required
+              data-i18n-placeholder="contact.form.placeholder.message" placeholder="Beschreiben Sie Ihr Anliegen..."></textarea>
+          </div>
+
+          <!-- Honeypot field — anti-bot, not visible -->
+          <div class="form__hp" aria-hidden="true">
+            <label for="website_url">Website</label>
+            <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="btn btn--primary form__submit" data-i18n="contact.form.submit">Nachricht senden</button>
+          <p class="form__notice" data-i18n="contact.form.notice">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß unserer Datenschutzerklärung zu. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <p class="footer__copy" data-i18n="footer.copy">&copy; 2026 Elias Lenz — IT-Sicherheitsberatung und KI-Governance</p>
+      <ul class="footer__links" role="list">
+        <li><a href="./impressum.html" data-i18n="footer.impressum">Impressum</a></li>
+        <li><a href="./datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div class="footer__attribution">
+      <span data-i18n="footer.affiliation">Teil des Kestura Teams</span> ·
+      <a href="https://kestura.com" target="_blank" rel="noopener noreferrer">kestura.com ↗</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== COOKIE CONSENT BANNER ====== -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-banner__text" data-i18n="cookie.text">Diese Website verwendet nur technisch notwendige Cookies. Keine Tracking- oder Analyse-Cookies.</p>
+  <button class="cookie-banner__btn" onclick="acceptCookies()" data-i18n="cookie.btn">Verstanden</button>
+</div>
+
+<!-- ====== SCRIPTS ====== -->
+<script src="./i18n.js"></script>
+<script>
+// === Mobile Navigation ===
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('active');
+  document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+}
+
+// === Header scroll effect ===
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  const scrollY = window.scrollY;
+  if (scrollY > 50) {
+    header.classList.add('header--scrolled');
+  } else {
+    header.classList.remove('header--scrolled');
+  }
+  lastScroll = scrollY;
+}, { passive: true });
+
+// === Cookie consent ===
+var cookieConsented = false;
+function acceptCookies() {
+  const banner = document.getElementById('cookieBanner');
+  banner.classList.add('hidden');
+  cookieConsented = true;
+  // Set a session cookie for consent tracking
+  try { document.cookie = 'digiassist_consent=1;path=/;SameSite=Strict'; } catch(e) {}
+}
+(function() {
+  try {
+    if (document.cookie.indexOf('digiassist_consent=1') !== -1) {
+      document.getElementById('cookieBanner').classList.add('hidden');
+      cookieConsented = true;
+    }
+  } catch(e) {}
+})();
+
+// === Contact form handler (mailto with JS-assembled email) ===
+function handleSubmit(e) {
+  e.preventDefault();
+
+  // Honeypot check
+  const hp = document.getElementById('website_url');
+  if (hp && hp.value) {
+    alert(t('form.error.bot'));
+    return false;
+  }
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const company = document.getElementById('company').value.trim();
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !subject || !message) {
+    alert(t('form.error.fields'));
+    return false;
+  }
+
+  // Assemble email address via JavaScript (obfuscated)
+  const u = 'info';
+  const d = 'eliaslenz-mbaberatung';
+  const t_ld = 'de';
+  const addr = u + '@' + d + '.' + t_ld;
+
+  // Build mailto body
+  const body = [
+    'Name: ' + name,
+    'E-Mail: ' + email,
+    company ? 'Unternehmen: ' + company : '',
+    '',
+    message
+  ].filter(Boolean).join('\n');
+
+  const mailtoLink = 'mailto:' + encodeURIComponent(addr) +
+    '?subject=' + encodeURIComponent('[DigiAssist] ' + subject) +
+    '&body=' + encodeURIComponent(body);
+
+  window.open(mailtoLink, '_blank');
+  alert(t('form.success'));
+  return false;
+}
+
+// === Scroll reveal animations ===
+(function() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+})();
+
+// === Tag i18n update ===
+function updateTags() {
+  document.querySelectorAll('[data-i18n-tags]').forEach(container => {
+    const key = container.getAttribute('data-i18n-tags');
+    const text = translations[currentLang][key];
+    if (text) {
+      const tags = text.split('|');
+      container.innerHTML = tags.map(tag =>
+        '<span class="service-card__tag">' + tag.trim() + '</span>'
+      ).join('');
+    }
+  });
+}
+
+// Override setLanguage to also update tags
+const origSetLanguage = setLanguage;
+setLanguage = function(lang) {
+  origSetLanguage(lang);
+  updateTags();
+};
+</script>
+
 </body>
 </html>
